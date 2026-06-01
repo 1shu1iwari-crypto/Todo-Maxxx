@@ -1,0 +1,168 @@
+/* Basic reset to remove default margins */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace; /* Terminal vibe */
+    background-color: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Style for the main spotlight card */
+.container {
+    background-color: #111;
+    color: #e0e0e0;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    width: 350px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+/* Spotlight glow effect */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(
+        circle 250px at var(--mouse-x, 0) var(--mouse-y, 0),
+        rgba(0, 255, 65, 0.15),
+        transparent 80%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensure contents sit above the spotlight pseudo element */
+.container > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: #00ff41;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 24px;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#todoInput {
+    flex: 1;
+    padding: 12px;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px 0 0 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#todoInput:focus {
+    border-color: #00ff41;
+}
+
+#addButton {
+    background-color: #00ff41;
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+#addButton:hover {
+    background-color: #00cc33;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+/* Style for each item in the list */
+li {
+    background-color: #1a1a1a;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #ddd;
+    font-size: 16px;
+    border-left: 4px solid #00ff41;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s;
+    border-top: 1px solid #222;
+    border-right: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+/* Container for checkbox and text */
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    accent-color: #00ff41;
+}
+
+/* Style when a task is completed */
+.completed .task-content span {
+    text-decoration: line-through;
+    color: #555;
+}
+
+.completed {
+    border-left-color: #444;
+    background-color: #111;
+}
+
+/* Style for the delete button */
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff3333;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: text-shadow 0.2s;
+}
+
+.delete-btn:hover {
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.8);
+}
